@@ -7,6 +7,7 @@ import {
   PiStrategyBold,
   PiStackBold,
   PiSignatureBold,
+  PiCursorClickBold,
 } from 'react-icons/pi';
 import { useNumberCounter } from '../../utils/useNumberCounter';
 import { Paragraph } from '../../components/ui/Paragraph';
@@ -21,27 +22,32 @@ const skills: SkillsProps[] = [
   {
     title: 'UI/UX design',
     icon: <PiPerspectiveBold />,
-    percent: 89,
+    percent: 99,
   },
   {
     title: 'Product design',
-    percent: 90,
+    percent: 95,
     icon: <PiExcludeBold />,
   },
   {
     title: 'Logo design',
-    percent: 76,
+    percent: 89,
     icon: <PiStrategyBold />,
   },
   {
     title: 'Website design',
-    percent: 80,
+    percent: 75,
     icon: <PiStackBold />,
   },
   {
     title: 'Branding',
-    percent: 75,
+    percent: 82,
     icon: <PiSignatureBold />,
+  },
+  {
+    title: 'Interaction design',
+    percent: 86,
+    icon: <PiCursorClickBold />,
   },
 ];
 
@@ -55,11 +61,7 @@ export const Skills = () => {
 
   const handleClickButton = (index: number, max: number) => {
     setIsLoading(index);
-    setCounterProps({
-      min: 0,
-      max: max,
-      speed: 20,
-    });
+    setCounterProps((prevObj) => ({ ...prevObj, max: max, speed: 20 }));
   };
 
   const { count } = useNumberCounter(counterProps);
