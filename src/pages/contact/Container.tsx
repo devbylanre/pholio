@@ -11,7 +11,7 @@ export const Container = () => {
   const chooseStep = (value: string) => setStep(value); //choose form step
   const chooseHelp = (value: string) => setHelp(value); //choose form help sections
 
-  const renderStep = (step: string) => {
+  const renderStep = (step: string, formik: any) => {
     switch (step) {
       case 'option':
         return (
@@ -22,7 +22,12 @@ export const Container = () => {
           />
         );
       case 'info':
-        return <Info chooseStep={chooseStep} />;
+        return (
+          <Info
+            chooseStep={chooseStep}
+            validateForm={formik.validateForm}
+          />
+        );
       default:
         return null;
     }
@@ -32,12 +37,21 @@ export const Container = () => {
     firstName: Yup.string()
       .required('First name value is required')
       .min(4, 'First name must be at least 4 characters'),
+    lastName: Yup.string()
+      .required('Last name value is required')
+      .min(4, 'Last name must be at least 4 characters'),
+    tel: Yup.string()
+      .required('Mobile number value is required')
+      .min(4, 'Mobile number must be at least 4 characters'),
+    email: Yup.string()
+      .required('Email value is required')
+      .min(4, 'Email must be at least 4 characters'),
   });
 
   const initialValues = {
     firstName: '',
     lastName: '',
-    mobile: '',
+    tel: '',
     email: '',
   };
 
@@ -47,9 +61,11 @@ export const Container = () => {
       validationSchema={validationSchema}
       onSubmit={() => {}}
     >
-      <Form className='flex flex-col gap-y-8 w-full md:w-[500px]'>
-        {renderStep(step)}
-      </Form>
+      {(formik) => (
+        <Form className='flex flex-col gap-y-8 w-full md:w-[500px]'>
+          {renderStep(step, formik)}
+        </Form>
+      )}
     </Formik>
   );
 };
