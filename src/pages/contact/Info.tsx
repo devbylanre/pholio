@@ -1,5 +1,5 @@
 import { Heading } from '../../components/ui/Heading';
-import { Input } from '../../components/ui/Input';
+import { FieldControl } from '../../components/forms/FieldControl';
 
 interface InfoProps {
   chooseStep: (data: string) => void;
@@ -12,27 +12,29 @@ export const Info = ({ chooseStep }: InfoProps) => {
         What do I call you?
       </Heading>
       <div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
-        <Input
+        <FieldControl
+          control='input'
           type='number'
           min={0}
-          defaultValue={0}
           name='firstName'
           label='First name'
-          error='Sorry only numbers are allowed'
         />
-        <Input
+        <FieldControl
+          control='input'
           type='text'
           min={0}
           name='lastName'
           label='Last name'
         />
-        <Input
+        <FieldControl
+          control='input'
           type='email'
           min={0}
           name='email'
           label='Email'
         />
-        <Input
+        <FieldControl
+          control='input'
           type='tel'
           min={0}
           name='telephone'

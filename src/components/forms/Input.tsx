@@ -1,27 +1,20 @@
-import React, { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { Paragraph } from './Paragraph';
+import { Paragraph } from '../ui/Paragraph';
+import { useField, Field } from 'formik';
 
 type props = {
   type?: string;
-  error?: string;
   className?: string;
   name: string;
   label?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
-export const Input = ({
-  type,
-  label,
-  name,
-  error,
-  className,
-  ...rest
-}: props) => {
-  const [isFocused, setIsFocused] = useState(false);
+export const Input = ({ type, label, name, className, ...rest }: props) => {
+  const [field, meta, helpers] = useField(name);
 
   return (
     <div className='flex flex-col gap-y-1'>
+      {/* display label if the label prop is not empty */}
       {label && (
         <label
           className='text-zinc-500'
@@ -31,23 +24,25 @@ export const Input = ({
         </label>
       )}
 
-      <input
+      {/* form field component */}
+      <Field
         type={type ? type : 'text'}
         className={twMerge(
           'w-full px-2.5 ring-1 ring-zinc-200 py-2 outline-none rounded-lg transition-all duration-200 ease-in-out',
-          isFocused && !error
+          meta.touched && !meta.error
             ? 'ring-zinc-900'
-            : error && isFocused && 'ring-red-500',
+            : meta.error && meta.touched && 'ring-red-500',
           className
         )}
         name={name}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onFocus={() => helpers.setTouched(true)}
+        onBlur={() => helpers.setTouched(false)}
         {...rest}
       />
 
-      {error ? (
-        <Paragraph className='text-sm text-red-500'>{error}</Paragraph>
+      {/* display error if there is any error */}
+      {meta.error ? (
+        <Paragraph className='text-sm text-red-500'>{meta.error}</Paragraph>
       ) : null}
     </div>
   );

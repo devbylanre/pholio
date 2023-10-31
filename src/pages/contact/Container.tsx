@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Options } from './Options';
 import { Info } from './Info';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 
 export const Container = () => {
   const [step, setStep] = useState<string>('option');
@@ -26,9 +28,28 @@ export const Container = () => {
     }
   };
 
+  const validationSchema = Yup.object().shape({
+    firstName: Yup.string()
+      .required('First name value is required')
+      .min(4, 'First name must be at least 4 characters'),
+  });
+
+  const initialValues = {
+    firstName: '',
+    lastName: '',
+    mobile: '',
+    email: '',
+  };
+
   return (
-    <div className='flex flex-col gap-y-8 w-full md:w-[500px]'>
-      {renderStep(step)}
-    </div>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={() => {}}
+    >
+      <Form className='flex flex-col gap-y-8 w-full md:w-[500px]'>
+        {renderStep(step)}
+      </Form>
+    </Formik>
   );
 };
