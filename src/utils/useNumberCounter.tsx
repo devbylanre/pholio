@@ -11,12 +11,14 @@ export const useNumberCounter = (props: hookType, callback?: () => void) => {
   const [count, setCount] = useState(min);
 
   useEffect(() => {
-    if (count < max) {
-      const interval = setInterval(
+    if (count <= max) {
+      const timeout = setTimeout(
         () => setCount((prevCount) => prevCount + 1),
         speed
       );
-      return () => clearInterval(interval);
+
+      // clean up the timer
+      return () => clearTimeout(timeout);
     }
 
     setCount(max);

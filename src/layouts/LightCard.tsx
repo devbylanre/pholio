@@ -5,11 +5,13 @@ import { twMerge } from 'tailwind-merge';
 type SingleProjectProps = {
   className?: string;
   children: React.ReactNode;
-  animate?: boolean;
+  whileHover?: {};
+  transition?: {};
+  onClick?: () => void;
 };
 
 export const LightCard = (props: SingleProjectProps) => {
-  const { className, children, animate } = props;
+  const { className, children, whileHover, transition, onClick } = props;
 
   return (
     <motion.div
@@ -17,15 +19,9 @@ export const LightCard = (props: SingleProjectProps) => {
         'gap-8 overflow-hidden transition-all duration-200 bg-white rounded-xl border border-zinc-200',
         className
       )}
-      whileHover={
-        animate
-          ? {
-              scale: 0.98,
-              origin: 0,
-              boxShadow: '0 0 25px 1px rgba(0, 0, 0, 0.05)',
-            }
-          : {}
-      }
+      whileHover={whileHover}
+      onClick={onClick}
+      transition={transition}
     >
       {/* children */}
       {children}

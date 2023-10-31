@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Heading } from '../../components/ui/Heading';
 import { Paragraph } from '../../components/ui/Paragraph';
 import { Button } from '../../components/ui/Button';
 import { LightCard } from '../../layouts/LightCard';
+import { motion } from 'framer-motion';
 import {
   PiArrowUpRightBold,
   PiDesktop,
@@ -41,6 +43,8 @@ const portfolios = [
 ];
 
 export const Portfolio = () => {
+  const [isButtonHovered, setIsButtonHovered] = useState<number | null>(null);
+
   return (
     <div className='flex flex-col gap-y-12'>
       <Heading
@@ -61,11 +65,12 @@ export const Portfolio = () => {
 
       {/* portfolio showcase */}
       <div className='grid grid-cols-12 gap-8'>
-        {portfolios.map((portfolio) => (
+        {portfolios.map((portfolio, index: number) => (
           <LightCard
-            animate
             key={portfolio.brand}
             className={portfolio.className}
+            whileHover={{ y: 12 }}
+            transition={{ duration: 0.25, type: 'tween' }}
           >
             {/* box content */}
             <div
@@ -88,11 +93,17 @@ export const Portfolio = () => {
               {/* portfolio link button */}
               <Button
                 className='px-3 py-2 border rounded border-zinc-900'
-                title='Download guideline'
-                icon={<PiArrowUpRightBold />}
-                iconPosition='right'
-                onHoverIcon={{ x: 3, y: -2 }}
-              />
+                onMouseOver={() => setIsButtonHovered(index)}
+                onMouseLeave={() => setIsButtonHovered(null)}
+              >
+                <span>Download guideline</span>
+                <motion.span
+                  initial={false}
+                  animate={isButtonHovered === index ? { x: 4, y: -4 } : {}}
+                >
+                  <PiArrowUpRightBold />
+                </motion.span>
+              </Button>
             </div>
             {/* box image */}
             <div className='w-full'>

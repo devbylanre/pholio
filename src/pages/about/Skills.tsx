@@ -12,11 +12,11 @@ import {
 import { useNumberCounter } from '../../utils/useNumberCounter';
 import { Paragraph } from '../../components/ui/Paragraph';
 
-type SkillsProps = {
+interface SkillsProps {
   title: string;
   percent: number;
   icon: React.ReactElement;
-};
+}
 
 const skills: SkillsProps[] = [
   {
@@ -59,12 +59,13 @@ export const Skills = () => {
     speed: 0,
   });
 
+  const { count } = useNumberCounter(counterProps);
+
   const handleClickButton = (index: number, max: number) => {
     setIsLoading(index);
-    setCounterProps((prevObj) => ({ ...prevObj, max: max, speed: 20 }));
-  };
 
-  const { count } = useNumberCounter(counterProps);
+    return setCounterProps((prevObj) => ({ ...prevObj, max: max, speed: 20 }));
+  };
 
   return (
     <div className='w-full'>
@@ -75,14 +76,15 @@ export const Skills = () => {
             onClick={() => handleClickButton(index, skill.percent)}
             key={index}
             className='px-3 py-1 text-sm transition-all duration-200 ease-in-out bg-white rounded-full hover:bg-gray-100 ring-1 ring-inset ring-zinc-900'
-            iconPosition='left'
-            icon={skill.icon}
-            title={
-              isLoading !== index ? (
+          >
+            {skill.icon}
+            <span>
+              {isLoading !== index ? (
                 skill.title
               ) : (
-                <div className='inline-flex items-center gap-x-2'>
-                  <div className='min-w-[100px] h-0.5 bg-zinc-300 rounded-full'>
+                <div className='flex items-center gap-x-2'>
+                  <div className='min-w-[100px] h-0.5 bg-zinc-300 rounded-full overflow-clip'>
+                    {/* count progress bar */}
                     <div
                       style={{
                         height: '100%',
@@ -91,13 +93,14 @@ export const Skills = () => {
                       }}
                     ></div>
                   </div>
+                  {/* count progress value */}
                   <Paragraph className='text-xs text-zinc-900'>
                     {count}
                   </Paragraph>
                 </div>
-              )
-            }
-          />
+              )}
+            </span>
+          </Button>
         ))}
       </div>
     </div>

@@ -6,6 +6,8 @@ import { RootLayout } from './layouts/RootLayout';
 // pages component
 import { Index } from './pages/index/Index';
 import { About } from './pages/about/About';
+import { Resume } from './pages/resume/Resume';
+import { Contact } from './pages/contact/Contact';
 
 const routes = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const routes = createBrowserRouter([
       {
         path: 'about',
         element: <About />,
+      },
+      {
+        path: 'resume',
+        element: <Resume />,
+      },
+      {
+        path: 'contact',
+        element: <Contact />,
       },
     ],
   },
