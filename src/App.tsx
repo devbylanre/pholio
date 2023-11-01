@@ -1,13 +1,30 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { lazy } from 'react';
 
 // layout components
 import { RootLayout } from './layouts/RootLayout';
 
 // pages component
-import { Index } from './pages/index/Index';
-import { About } from './pages/about/About';
-import { Resume } from './pages/resume/Resume';
-import { Contact } from './pages/contact/Contact';
+const LazyHome = lazy(() =>
+  import('./pages/index/Index').then((module) => {
+    return { default: module.Index };
+  })
+);
+const LazyAbout = lazy(() =>
+  import('./pages/about/About').then((module) => {
+    return { default: module.About };
+  })
+);
+const LazyResume = lazy(() =>
+  import('./pages/resume/Resume').then((module) => {
+    return { default: module.Resume };
+  })
+);
+const LazyContact = lazy(() =>
+  import('./pages/contact/Contact').then((module) => {
+    return { default: module.Contact };
+  })
+);
 
 const routes = createBrowserRouter([
   {
@@ -16,19 +33,19 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Index />,
+        element: <LazyHome />,
       },
       {
         path: 'about',
-        element: <About />,
+        element: <LazyAbout />,
       },
       {
         path: 'resume',
-        element: <Resume />,
+        element: <LazyResume />,
       },
       {
         path: 'contact',
-        element: <Contact />,
+        element: <LazyContact />,
       },
     ],
   },
