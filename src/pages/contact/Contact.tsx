@@ -15,7 +15,7 @@ export const Contact = () => {
           content='Reach out to Matt regarding your next digital creative project'
         />
       </Helmet>
-      <div className='flex flex-col items-center justify-center min-h-screen'>
+      <div className='flex flex-col items-center justify-start min-h-screen pt-8 md:justify-center md:pt-0'>
         <Container />
       </div>
     </>
