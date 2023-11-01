@@ -2,12 +2,12 @@ import { Heading } from '../../components/ui/Heading';
 import { Paragraph } from '../../components/ui/Paragraph';
 import { LightCard } from '../../layouts/LightCard';
 
-type experienceType = {
+interface experienceType {
   brand: string;
   position: string;
   duration: string;
   roles: string[];
-};
+}
 
 const experiences: experienceType[] = [
   {
@@ -17,7 +17,7 @@ const experiences: experienceType[] = [
     roles: [
       'Designed marketing materials for clients in various industries',
       'Developed brand guidelines for multiple clients',
-      'COllaborated with a team of designers and copywriters',
+      'Collaborated with a team of designers and copywriters',
     ],
   },
   {
