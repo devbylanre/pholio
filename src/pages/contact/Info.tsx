@@ -3,6 +3,7 @@ import { FieldControl } from '../../components/forms/FieldControl';
 import { Button } from '../../components/ui/Button';
 import { useState } from 'react';
 import { FormError } from './FormError';
+import { PiArrowRightBold } from 'react-icons/pi';
 
 // props interface
 interface InfoProps {
@@ -61,7 +62,7 @@ export const Info = ({ chooseStep, validateForm }: InfoProps) => {
           type='email'
           min={0}
           name='email'
-          label='Email'
+          label='Email - work or personal'
         />
         {/* mobile number field */}
         <FieldControl
@@ -72,6 +73,7 @@ export const Info = ({ chooseStep, validateForm }: InfoProps) => {
           label='Mobile'
         />
       </div>
+
       {/* button invokes the handleGoTo function */}
       <Button
         type='button'
@@ -79,6 +81,7 @@ export const Info = ({ chooseStep, validateForm }: InfoProps) => {
         onClick={handleGoTo}
       >
         Let's discuss about your project
+        <PiArrowRightBold />
       </Button>
 
       {/* form error block */}

@@ -20,7 +20,7 @@ export const Resume = () => {
           content='Hi, my name is Matt a digital creative agent with over 5 years of experience. You can find my resume attached to the webpage'
         />
       </Helmet>
-      <div className='flex flex-col mt-28 gap-y-8'>
+      <div className='flex flex-col mt-8 md:mt-28 gap-y-8'>
         {/* profile section*/}
         <Profile />
 

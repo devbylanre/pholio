@@ -1,9 +1,10 @@
 import { Paragraph } from '../../components/ui/Paragraph';
 import { LightCard } from '../../layouts/LightCard';
 import { Heading } from '../../components/ui/Heading';
+import { motion } from 'framer-motion';
 
 import {
-  PiPaintBucketBold,
+  PiDeviceMobileSpeakerBold,
   PiFlowArrowBold,
   PiIntersectBold,
   PiHandWavingBold,
@@ -12,6 +13,7 @@ import {
   PiArrowRightBold,
 } from 'react-icons/pi';
 import { Button } from '../../components/ui/Button';
+import { twMerge } from 'tailwind-merge';
 
 // option type
 interface OptionType {
@@ -19,19 +21,24 @@ interface OptionType {
   icon: React.ReactElement;
 }
 
+const iconClassName: string = 'w-8 h-8 p-1.5 rounded-full bg-zinc-100';
+
 const options: OptionType[] = [
   {
     title: 'website design',
-    icon: <PiPaintBucketBold className='w-10 h-10' />,
+    icon: <PiDeviceMobileSpeakerBold className={iconClassName} />,
   },
   {
     title: 'Interaction design',
-    icon: <PiHandWavingBold className='w-10 h-10' />,
+    icon: <PiHandWavingBold className={iconClassName} />,
   },
-  { title: 'UI/UX design', icon: <PiFlowArrowBold className='w-10 h-10' /> },
-  { title: 'logo design', icon: <PiIntersectBold className='w-10 h-10' /> },
-  { title: 'branding', icon: <PiStackSimpleBold className='w-10 h-10' /> },
-  { title: 'general', icon: <PiLightningBold className='w-10 h-10' /> },
+  {
+    title: 'UI/UX design',
+    icon: <PiFlowArrowBold className={iconClassName} />,
+  },
+  { title: 'logo design', icon: <PiIntersectBold className={iconClassName} /> },
+  { title: 'branding', icon: <PiStackSimpleBold className={iconClassName} /> },
+  { title: 'general', icon: <PiLightningBold className={iconClassName} /> },
 ];
 
 interface OptionsProps {
@@ -43,39 +50,47 @@ interface OptionsProps {
 export const Options = (props: OptionsProps) => {
   const { chooseStep, chooseHelp, help } = props;
 
-  // setCompTitle('Hey, How can we help you?');
-
   return (
     <>
       <Heading className='text-xl text-left md:text-2xl md:text-center'>
         Hey,
         <br /> How can we help you?
       </Heading>
-      <div className='grid grid-cols-2 gap-5 md:grid-cols-3'>
+
+      {/* options list */}
+      <div className='grid grid-cols-1 gap-y-3 md:gap-5 md:grid-cols-2'>
         {options.map((option: OptionType) => (
           <LightCard
             key={option.title}
-            className={`${
-              help === option.title && 'border-zinc-900 border-2'
-            } flex flex-col items-center p-4 cursor-pointer gap-y-2`}
+            className={twMerge(
+              'inline-flex items-center ring-1 ring-zinc-50 gap-x-2 p-3 cursor-pointer gap-y-2',
+              help === option.title && 'ring-zinc-900'
+            )}
             onClick={() => chooseHelp(option.title)}
-            whileHover={{ y: -8 }}
             transition={{ duration: 0.1, type: 'tween' }}
           >
-            {option.icon}
+            {/* option icon */}
+            <motion.span
+              animate={help === option.title ? { rotate: 45 } : { rotate: 0 }}
+            >
+              {option.icon}
+            </motion.span>
+            {/* option title */}
             <Paragraph className='text-sm capitalize text-zinc-900'>
               {option.title}
             </Paragraph>
           </LightCard>
         ))}
       </div>
+
+      {/* show button if an option is selected */}
       {help !== null && (
         <Button
-          className='self-center px-5 py-2 transition-all duration-200 ease-in-out bg-white border rounded-lg border-zinc-200 hover:bg-zinc-50'
+          className='px-5 py-2 transition-all duration-200 ease-in-out bg-white border rounded-lg border-zinc-200 hover:bg-zinc-50'
           onClick={() => chooseStep('info')}
         >
+          <span>Jump start with {help}</span>
           <PiArrowRightBold />
-          <span>Continue</span>
         </Button>
       )}
     </>
