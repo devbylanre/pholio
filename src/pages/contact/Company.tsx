@@ -52,8 +52,10 @@ export const Company = (props: CompanyProps) => {
     }
 
     setHasErrors(false); //assign false to hasErrors
-    const successTimer = setTimeout(() => setIsSubmitting(false), 3000); //assign false to isSubmitting
-    await submitForm(); //submit form
+    const successTimer = setTimeout(() => {
+      setIsSubmitting(false); //assign false to isSubmitting
+      submitForm(); //submit form
+    }, 3000);
     return () => clearTimeout(successTimer);
   };
 
