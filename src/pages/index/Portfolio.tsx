@@ -64,7 +64,7 @@ export const Portfolio = () => {
       </div>
 
       {/* portfolio showcase */}
-      <div className='grid grid-cols-12 gap-8'>
+      <div className='grid grid-cols-12 gap-y-8 md:gap-8'>
         {portfolios.map((portfolio, index: number) => (
           <LightCard
             key={portfolio.brand}
@@ -76,9 +76,9 @@ export const Portfolio = () => {
             <div
               className={`${
                 portfolio.layout === 'column' && 'pt-5'
-              } flex flex-col items-start w-full px-5 gap-y-2`}
+              } flex flex-col items-start px-5 gap-y-2`}
             >
-              {/* portfolio category icon */}
+              {/* portfolio icon */}
               <div className='flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-100'>
                 {portfolio.icon}
               </div>
