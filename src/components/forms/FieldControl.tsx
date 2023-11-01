@@ -1,4 +1,6 @@
 import { Input } from './Input';
+import { Select } from './Select';
+import { Textarea } from './Textarea';
 
 type props = {
   control: string;
@@ -9,7 +11,26 @@ export const FieldControl = (props: props) => {
 
   switch (control) {
     case 'input':
-      return <Input {...rest} />;
+      return (
+        <Input
+          control={control}
+          {...rest}
+        />
+      );
+    case 'select':
+      return (
+        <Select
+          control={control}
+          {...rest}
+        />
+      );
+    case 'textarea':
+      return (
+        <Textarea
+          control={control}
+          {...rest}
+        />
+      );
 
     default:
       return null;

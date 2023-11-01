@@ -1,35 +1,42 @@
 import { useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface AlertProps {
   children: React.ReactNode;
   className?: string;
   state: 'danger' | 'success' | 'warning';
   isVisible: boolean;
-  setClosed: () => void;
+  setClose: () => void;
 }
 
 export const Alert = (props: AlertProps) => {
-  const { children, className, state, isVisible, setClosed } = props;
+  const { children, className, state, isVisible, setClose } = props;
 
   useEffect(() => {
     if (isVisible) {
-      const timer = setTimeout(() => setClosed(), 5000);
+      const timer = setTimeout(() => setClose(), 5000);
       return () => clearTimeout(timer);
     }
-  }, [isVisible, setClosed]);
+  }, [isVisible, setClose]);
 
   if (!isVisible) return null;
 
   return (
-    <div
-      className={twMerge(
-        'p-3 rounded-xl',
-        className,
-        state === 'danger' && 'bg-red-100'
-      )}
-    >
-      {children}
-    </div>
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        key='alert'
+        exit={{ opacity: 0, y: 20 }}
+        className={twMerge(
+          'p-3 rounded-xl',
+          className,
+          state === 'danger' && 'bg-red-100'
+        )}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
   );
 };

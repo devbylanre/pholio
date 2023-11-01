@@ -2,37 +2,44 @@ import { Heading } from '../../components/ui/Heading';
 import { FieldControl } from '../../components/forms/FieldControl';
 import { Button } from '../../components/ui/Button';
 import { useState } from 'react';
-import { PiBellSimpleRingingBold } from 'react-icons/pi';
-import { Paragraph } from '../../components/ui/Paragraph';
-import { Alert } from '../../components/ui/Alert';
+import { FormError } from './FormError';
 
+// props interface
 interface InfoProps {
   chooseStep: (data: string) => void;
   validateForm: () => any;
 }
 
 export const Info = ({ chooseStep, validateForm }: InfoProps) => {
-  const [hasErrors, setHasErrors] = useState<true | false>(false);
+  const [hasErrors, setHasErrors] = useState<boolean>(false);
 
   // handle the next form step requirements
   const handleGoTo = async () => {
-    await validateForm().then((errors: {}) => {
-      // check if there was an error
-      if (Object.keys(errors).length > 0) {
+    const fields = ['firstName', 'lastName', 'email', 'tel'];
+    const newErrors = await validateForm();
+
+    // loops through the fields array
+    for (const field of fields) {
+      //check if any of the existing field has an error
+      if (newErrors[field]) {
         setHasErrors(true);
-      } else {
-        setHasErrors(false);
-        chooseStep('option');
+        return;
       }
-    });
+    }
+
+    setHasErrors(false); //set hasErrors to false
+    chooseStep('company'); // go to the company form or step
   };
 
   return (
     <>
+      {/* heading or title */}
       <Heading className='text-xl text-left md:text-2xl md:text-center'>
         What do I call you?
       </Heading>
+      {/* fields */}
       <div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
+        {/* first name field */}
         <FieldControl
           control='input'
           type='text'
@@ -40,6 +47,7 @@ export const Info = ({ chooseStep, validateForm }: InfoProps) => {
           name='firstName'
           label='First name'
         />
+        {/* last name field */}
         <FieldControl
           control='input'
           type='text'
@@ -47,6 +55,7 @@ export const Info = ({ chooseStep, validateForm }: InfoProps) => {
           name='lastName'
           label='Last name'
         />
+        {/* email address field */}
         <FieldControl
           control='input'
           type='email'
@@ -54,6 +63,7 @@ export const Info = ({ chooseStep, validateForm }: InfoProps) => {
           name='email'
           label='Email'
         />
+        {/* mobile number field */}
         <FieldControl
           control='input'
           type='tel'
@@ -71,19 +81,13 @@ export const Info = ({ chooseStep, validateForm }: InfoProps) => {
         Let's discuss about your project
       </Button>
 
-      {/* an alert that is visible when there's an error */}
-      <Alert
-        state='danger'
+      {/* form error block */}
+      <FormError
         isVisible={hasErrors}
-        setClosed={() => setHasErrors(false)}
-        className='inline-flex gap-x-3'
-      >
-        <PiBellSimpleRingingBold className='w-6 h-6 fill-red-900' />
-        <Paragraph className='text-sm font-medium text-red-900'>
-          Fill the fields with the required values to proceed. We would love to
-          hear more from you
-        </Paragraph>
-      </Alert>
+        setClose={() => setHasErrors(false)}
+        message='Fill the fields with the required values to proceed. We would love to
+        hear more from you'
+      />
     </>
   );
 };

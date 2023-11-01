@@ -17,7 +17,7 @@ export const Input = ({ type, label, name, className, ...rest }: props) => {
       {/* display label if the label prop is not empty */}
       {label && (
         <label
-          className='text-zinc-500'
+          className='text-zinc-900'
           htmlFor={name}
         >
           {label}
