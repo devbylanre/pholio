@@ -19,7 +19,7 @@ const apps = [
 export const Footer = () => {
   return (
     <div className='flex flex-col px-3 pb-24 mt-16 md:pb-8 gap-y-8'>
-      <div className='flex flex-col items-start text-left md:items-center gap-y-2 md:text-center'>
+      <div className='flex flex-col items-center text-center gap-y-2'>
         <Heading className='text-xl md:text-2xl'>
           Want to build a new Project?
         </Heading>
