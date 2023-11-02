@@ -25,10 +25,15 @@ const LazyContact = lazy(() =>
     return { default: module.Contact };
   })
 );
+const LazyNotFound = lazy(() =>
+  import('./pages/404/NotFound').then((module) => {
+    return { default: module.NotFound };
+  })
+);
 
 const routes = createBrowserRouter([
   {
-    path: '',
+    path: '/',
     element: <RootLayout />,
     children: [
       {
@@ -46,6 +51,10 @@ const routes = createBrowserRouter([
       {
         path: 'contact',
         element: <LazyContact />,
+      },
+      {
+        path: '/*',
+        element: <LazyNotFound />,
       },
     ],
   },
