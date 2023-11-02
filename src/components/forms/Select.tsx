@@ -72,9 +72,7 @@ export const Select = (props: SelectProps) => {
 
       {/* error block */}
       {meta.error && (
-        <Paragraph className='mt-1 text-sm text-red-500'>
-          {meta.error}
-        </Paragraph>
+        <Paragraph className='text-sm text-red-500 '>{meta.error}</Paragraph>
       )}
     </div>
   );

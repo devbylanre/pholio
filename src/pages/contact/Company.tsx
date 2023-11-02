@@ -89,7 +89,7 @@ export const Company = (props: CompanyProps) => {
 
         <Button
           type='button'
-          className='py-2 bg-white border rounded-lg col-span-full hover:bg-zinc-100 border-x-zinc-200'
+          className='py-2 duration-200 ease-in-out bg-white border rounded-lg col-span-full hover:bg-zinc-100 border-x-zinc-200'
           onClick={handleSubmit}
           disabled={isSubmitting}
         >
