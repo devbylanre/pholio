@@ -1,5 +1,6 @@
 import { Heading } from './ui/Heading';
 import { Paragraph } from './ui/Paragraph';
+import { motion } from 'framer-motion';
 import {
   FaSquareXTwitter,
   FaLinkedinIn,
@@ -29,13 +30,13 @@ export const Footer = () => {
         </Paragraph>
       </div>
 
-      <div className='inline-flex gap-x-2'>
+      <div className='inline-flex items-center justify-center gap-x-2'>
         {apps.map((app, index) => (
           <LightCard
-            className='inline-flex items-center justify-center px-3 py-2 rounded-full gap-x-2'
+            className='inline-flex items-center justify-center p-3 rounded-full cursor-pointer gap-x-2'
             key={index}
           >
-            {app.icon}
+            <motion.span whileHover={{ scale: 1.2 }}>{app.icon}</motion.span>
           </LightCard>
         ))}
       </div>

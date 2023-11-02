@@ -6,7 +6,7 @@ import { LightCard } from '../../layouts/LightCard';
 import { motion } from 'framer-motion';
 import {
   PiArrowUpRightBold,
-  PiDesktop,
+  PiDesktopBold,
   PiSignatureBold,
   PiShapesBold,
   PiPolygonBold,
@@ -16,7 +16,7 @@ const portfolios = [
   {
     brand: 'passenger',
     category: 'Website design',
-    icon: <PiDesktop className='w-5 h-5' />,
+    icon: <PiDesktopBold className='w-5 h-5' />,
     image: './assets/images/portfolio-one.jpg',
     comment: 'A perfectly crafted website for a airline business company',
   },
@@ -24,7 +24,7 @@ const portfolios = [
     brand: 'Like a gem',
     category: 'Branding',
     icon: <PiSignatureBold className='w-5 h-5' />,
-    image: './assets/images/portfolio-one.jpg',
+    image: './assets/images/portfolio-four.jpg',
     comment:
       'Designed a simple and clear brand identity, logo, mockups and more...',
   },

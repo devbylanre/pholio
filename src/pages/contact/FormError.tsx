@@ -15,7 +15,7 @@ export const FormError = (props: FormErrorProps) => {
       state='danger'
       isVisible={isVisible}
       setClose={setClose}
-      className='inline-flex gap-x-3'
+      className='flex flex-col gap-3 md:flex-row'
     >
       <PiBellSimpleRingingBold className='w-6 h-6 fill-red-900' />
       <Paragraph className='text-sm font-medium text-red-900'>
