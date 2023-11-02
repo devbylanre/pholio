@@ -1,9 +1,10 @@
 import { Heading } from '../../components/ui/Heading';
 import { Paragraph } from '../../components/ui/Paragraph';
+import { LightCard } from '../../layouts/LightCard';
 
 export const Story = () => {
   return (
-    <div className='flex flex-col p-5 bg-white border rounded-xl gap-y-5 border-zinc-200'>
+    <LightCard className='flex flex-col p-3 md:p-5 gap-y-5'>
       {/* heading */}
       <Heading className='text-2xl'>My story</Heading>
       {/* first paragraph */}
@@ -43,6 +44,6 @@ export const Story = () => {
         Their journey may have started small, but their passion and dedication
         have taken them far beyond their wildest dreams.
       </Paragraph>
-    </div>
+    </LightCard>
   );
 };

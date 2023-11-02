@@ -39,7 +39,7 @@ export const Experience = () => {
         {experiences.map((experience) => (
           <LightCard
             key={experience.brand}
-            className='p-4'
+            className='p-3 md:p-4'
           >
             <Heading className='text-sm'>{experience.brand}</Heading>
             <Paragraph className='mt-0.5 text-sm'>

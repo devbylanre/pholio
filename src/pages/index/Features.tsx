@@ -29,7 +29,7 @@ export const Features = () => {
     <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
       {features.map((demo) => (
         <LightCard
-          className='p-5'
+          className='p-3'
           key={demo.title}
         >
           <Heading className='capitalize'>{demo.title}</Heading>

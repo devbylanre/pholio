@@ -12,7 +12,7 @@ export const Education = () => {
   return (
     <div className=''>
       <Heading>Education</Heading>
-      <LightCard className='flex flex-col p-4 mt-3 gap-y-2'>
+      <LightCard className='flex flex-col p-3 mt-3 md:p-4 gap-y-2'>
         {schools.map((school, index) => (
           <Paragraph
             key={index}

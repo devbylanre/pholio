@@ -7,38 +7,40 @@ import { motion } from 'framer-motion';
 import {
   PiArrowUpRightBold,
   PiDesktop,
+  PiSignatureBold,
   PiShapesBold,
   PiPolygonBold,
 } from 'react-icons/pi';
 
 const portfolios = [
   {
-    layout: 'row',
     brand: 'passenger',
     category: 'Website design',
     icon: <PiDesktop className='w-5 h-5' />,
     image: './assets/images/portfolio-one.jpg',
     comment: 'A perfectly crafted website for a airline business company',
-    className:
-      'flex flex-col md:flex-row gap-8 items-center col-span-full pt-5 md:pt-0',
   },
   {
-    layout: 'column',
+    brand: 'Like a gem',
+    category: 'Branding',
+    icon: <PiSignatureBold className='w-5 h-5' />,
+    image: './assets/images/portfolio-one.jpg',
+    comment:
+      'Designed a simple and clear brand identity, logo, mockups and more...',
+  },
+  {
     brand: 'Sassplex X',
     comment: 'A perfectly crafted website for a airline business company',
     category: 'UX design',
     icon: <PiShapesBold className='w-5 h-5' />,
     image: './assets/images/portfolio-two.jpg',
-    className: 'flex-col flex gap-8 col-span-full md:col-span-6',
   },
   {
-    layout: 'column',
     brand: 'OnlyRead',
     comment: 'A perfectly crafted website for a airline business company',
     category: 'Motion graphics',
     icon: <PiPolygonBold className='w-5 h-5' />,
     image: './assets/images/portfolio-three.jpg',
-    className: 'flex-col flex gap-8 col-span-full md:col-span-6',
   },
 ];
 
@@ -64,20 +66,16 @@ export const Portfolio = () => {
       </div>
 
       {/* portfolio showcase */}
-      <div className='grid grid-cols-12 gap-y-8 md:gap-8'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-8'>
         {portfolios.map((portfolio, index: number) => (
           <LightCard
             key={portfolio.brand}
-            className={portfolio.className}
+            className='flex flex-col gap-y-5'
             whileHover={{ y: 12 }}
             transition={{ duration: 0.25, type: 'tween' }}
           >
             {/* box content */}
-            <div
-              className={`${
-                portfolio.layout === 'column' && 'pt-5'
-              } flex flex-col items-start px-5 gap-y-2`}
-            >
+            <div className='flex flex-col items-start p-3 pb-0 md:p-4 gap-y-2'>
               {/* portfolio icon */}
               <div className='flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-100'>
                 {portfolio.icon}

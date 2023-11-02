@@ -3,6 +3,7 @@ import { Portfolio } from './Portfolio';
 import { Features } from './Features';
 import { Story } from './Story';
 import { Helmet } from 'react-helmet-async';
+import { Stack } from './Stack';
 
 export const Index = () => {
   return (
@@ -24,8 +25,8 @@ export const Index = () => {
         {/* story section */}
         <Story />
         {/*  */}
-
-        {/* homepage fifth section */}
+        {/* stack section */}
+        <Stack />
       </div>
     </>
   );

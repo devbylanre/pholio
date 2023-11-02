@@ -33,7 +33,7 @@ const infos: InfoType[] = [
 export const Info = () => {
   return (
     <div>
-      <LightCard className='flex flex-col p-4 gap-y-0'>
+      <LightCard className='flex flex-col p-3 md:p-4 gap-y-0'>
         {infos.map((info) => (
           <div
             key={info.title}

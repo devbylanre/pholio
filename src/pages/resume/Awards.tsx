@@ -35,7 +35,7 @@ export const Awards = () => {
   return (
     <div>
       <Heading>Awards - {TotalAwardCount}</Heading>
-      <LightCard className='flex flex-col p-4 mt-3 gap-y-2'>
+      <LightCard className='flex flex-col p-3 mt-3 md:p-4 gap-y-2'>
         {awards.map((award) => (
           <div
             key={award.count}

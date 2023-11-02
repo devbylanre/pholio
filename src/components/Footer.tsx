@@ -9,10 +9,10 @@ import {
 import { LightCard } from '../layouts/LightCard';
 
 const apps = [
-  { icon: <FaDribbble />, username: 'joinmatt' },
-  { icon: <FaBehance />, username: 'mattdesign' },
-  { icon: <FaSquareXTwitter />, username: 'joinmatt' },
-  { icon: <FaLinkedinIn />, username: 'joinmatt' },
+  { icon: <FaDribbble /> },
+  { icon: <FaBehance /> },
+  { icon: <FaSquareXTwitter /> },
+  { icon: <FaLinkedinIn /> },
 ];
 
 export const Footer = () => {
@@ -29,16 +29,13 @@ export const Footer = () => {
         </Paragraph>
       </div>
 
-      <div className='grid self-center w-full grid-cols-2 gap-2 md:grid-cols-4 justify-items-center md:w-fit'>
+      <div className='inline-flex gap-x-2'>
         {apps.map((app, index) => (
           <LightCard
-            className='inline-flex items-center justify-center w-full px-3 py-2 gap-x-2'
+            className='inline-flex items-center justify-center px-3 py-2 rounded-full gap-x-2'
             key={index}
           >
             {app.icon}
-            <Paragraph className='text-sm first-letter:capitalize text-zinc-900'>
-              @{app.username}
-            </Paragraph>
           </LightCard>
         ))}
       </div>

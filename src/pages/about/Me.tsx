@@ -4,7 +4,7 @@ import { LightCard } from '../../layouts/LightCard';
 
 export const Me = () => {
   return (
-    <LightCard className='flex flex-col p-5 gap-y-5'>
+    <LightCard className='flex flex-col p-3 md:p-4 gap-y-5'>
       <Heading className='text-xl'>About me</Heading>
       <Paragraph className='text-zinc-900'>
         Hello there! My name is Matt. As a digital designer, I have a passion
