@@ -9,12 +9,7 @@ import {
 import { Paragraph } from './ui/Paragraph';
 
 const Icon = ({ icon }: { icon: React.ReactElement }) => (
-  <motion.span
-    whileHover={{ y: 4 }}
-    className='block md:hidden'
-  >
-    {icon}
-  </motion.span>
+  <span className='block md:hidden'>{icon}</span>
 );
 
 interface itemsProp {
@@ -52,12 +47,12 @@ const items: itemsProp[] = [
 
 export const Header = () => {
   return (
-    <div className='flex flex-col items-center justify-center'>
+    <div className='fixed left-0 z-50 flex flex-col items-center justify-center w-full bg-opacity-[92%] top-[90%] py-2 md:top-0 backdrop-blur bg-zinc-50'>
       <motion.div
-        className='fixed z-50 inline-flex items-center justify-between w-11/12 px-5 m-auto bg-white rounded-full top-[90%] gap-x-10 md:w-fit md:top-4 shadow-light overflow-clip'
+        className='inline-flex items-center justify-between w-11/12 px-5 m-auto mt-0 bg-white rounded-full md:mt-4 gap-x-10 md:w-fit shadow-light overflow-clip'
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
-        transition={{ duration: 1.5 }}
+        transition={{ duration: 0.5 }}
       >
         {items.map((item) => (
           <NavLink
@@ -69,7 +64,9 @@ export const Header = () => {
               }`
             }
           >
+            {/* item icon */}
             {item.icon}
+            {/* item title */}
             <Paragraph className='hidden md:block text-inherit'>
               {item.title}
             </Paragraph>

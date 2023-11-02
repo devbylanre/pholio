@@ -21,6 +21,7 @@ export const Select = (props: SelectProps) => {
   const { options, name, placeholder, label } = props;
   const [field, meta, helpers] = useField(name);
 
+  // set field touched
   const setTouched = () => {
     if (meta.touched) {
       helpers.setTouched(false);
@@ -29,6 +30,7 @@ export const Select = (props: SelectProps) => {
     }
   };
 
+  // set field value
   const setValue = (value: string | number) => {
     helpers.setTouched(false);
     helpers.setValue(value);

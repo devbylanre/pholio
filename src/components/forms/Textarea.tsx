@@ -12,8 +12,10 @@ export const Textarea = (props: TextareaProps) => {
   const { name, label } = props;
   const [field, meta, helpers] = useField(name);
 
+  // select textarea field
   const textarea = document.querySelector(`#${name}`) as HTMLTextAreaElement;
 
+  // adjust height of textarea to fit content are of box
   useEffect(() => {
     if (textarea) {
       textarea.style.height = 'fit-content';
@@ -25,6 +27,7 @@ export const Textarea = (props: TextareaProps) => {
 
   return (
     <div className='flex flex-col gap-y-1'>
+      {/* field label */}
       {label && (
         <label
           htmlFor={name}
@@ -33,6 +36,7 @@ export const Textarea = (props: TextareaProps) => {
           {label}
         </label>
       )}
+      {/* textarea field */}
       <Field
         id={name}
         className={twMerge(

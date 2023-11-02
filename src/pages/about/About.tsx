@@ -22,7 +22,7 @@ export const About = () => {
       </Helmet>
 
       {/* page components */}
-      <div className='flex flex-col mt-8 md:mt-32 gap-y-12 md:gap-y-20'>
+      <div className='flex flex-col pt-8 md:pt-32 gap-y-12 md:gap-y-20'>
         {/* freelancer profile */}
         <Profile />
 
