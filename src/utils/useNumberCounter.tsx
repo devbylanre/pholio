@@ -25,5 +25,5 @@ export const useNumberCounter = (props: hookType, callback?: () => void) => {
     callback && callback();
   }, [min, max, speed, count, callback]);
 
-  return { count };
+  return { count, setCount };
 };

@@ -22,11 +22,11 @@ const skills: SkillsProps[] = [
   {
     title: 'UI/UX design',
     icon: <PiPerspectiveBold />,
-    percent: 99,
+    percent: 95,
   },
   {
     title: 'Product design',
-    percent: 95,
+    percent: 90,
     icon: <PiExcludeBold />,
   },
   {
@@ -36,12 +36,12 @@ const skills: SkillsProps[] = [
   },
   {
     title: 'Website design',
-    percent: 75,
+    percent: 85,
     icon: <PiStackBold />,
   },
   {
     title: 'Branding',
-    percent: 82,
+    percent: 87,
     icon: <PiSignatureBold />,
   },
   {
@@ -52,19 +52,24 @@ const skills: SkillsProps[] = [
 ];
 
 export const Skills = () => {
-  const [isLoading, setIsLoading] = useState<null | number>(null);
+  const [currentSkill, setCurrentSkill] = useState<null | number>(null);
   const [counterProps, setCounterProps] = useState({
     min: 0,
     max: 0,
     speed: 0,
   });
 
-  const { count } = useNumberCounter(counterProps);
+  const { count, setCount } = useNumberCounter(counterProps);
 
   const handleClickButton = (index: number, max: number) => {
-    setIsLoading(index);
+    setCurrentSkill(index); // set the current skill
+    setCount(0); //reset the count to zero
 
-    return setCounterProps((prevObj) => ({ ...prevObj, max: max, speed: 20 }));
+    return setCounterProps((prevObj) => {
+      const obj = prevObj; //store the previous state to the variable
+      // return a new object to state current state
+      return { ...obj, max: max, speed: 20 };
+    });
   };
 
   return (
@@ -79,7 +84,7 @@ export const Skills = () => {
           >
             {skill.icon}
             <span>
-              {isLoading !== index ? (
+              {currentSkill !== index ? (
                 skill.title
               ) : (
                 <div className='flex items-center gap-x-2'>

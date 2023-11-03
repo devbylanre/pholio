@@ -1,6 +1,8 @@
 import { Heading } from './ui/Heading';
 import { Paragraph } from './ui/Paragraph';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+
 import {
   FaSquareXTwitter,
   FaLinkedinIn,
@@ -10,10 +12,13 @@ import {
 import { LightCard } from '../layouts/LightCard';
 
 const apps = [
-  { icon: <FaDribbble /> },
-  { icon: <FaBehance /> },
-  { icon: <FaSquareXTwitter /> },
-  { icon: <FaLinkedinIn /> },
+  { icon: <FaDribbble />, url: '' },
+  { icon: <FaBehance />, url: '' },
+  { icon: <FaSquareXTwitter />, url: 'https://twitter.com/devbylanre' },
+  {
+    icon: <FaLinkedinIn />,
+    url: 'https://www.linkedin.com/in/olanrewaju-oladejo-44134a1aa/',
+  },
 ];
 
 export const Footer = () => {
@@ -32,12 +37,17 @@ export const Footer = () => {
 
       <div className='inline-flex items-center justify-center gap-x-2'>
         {apps.map((app, index) => (
-          <LightCard
-            className='inline-flex items-center justify-center p-3 rounded-full cursor-pointer gap-x-2'
-            key={index}
+          <Link
+            to={app.url}
+            target={app.url && '_blank'}
           >
-            <motion.span whileHover={{ scale: 1.2 }}>{app.icon}</motion.span>
-          </LightCard>
+            <LightCard
+              className='inline-flex items-center justify-center p-3 rounded-full cursor-pointer gap-x-2'
+              key={index}
+            >
+              <motion.span whileHover={{ scale: 1.2 }}>{app.icon}</motion.span>
+            </LightCard>
+          </Link>
         ))}
       </div>
     </div>

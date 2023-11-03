@@ -71,7 +71,8 @@ export const Options = (props: OptionsProps) => {
           >
             {/* option icon */}
             <motion.span
-              animate={help === option.title ? { rotate: 45 } : { rotate: 0 }}
+              animate={help === option.title ? { rotate: 360 } : { rotate: 0 }}
+              transition={{ duration: 0.5 }}
             >
               {option.icon}
             </motion.span>
