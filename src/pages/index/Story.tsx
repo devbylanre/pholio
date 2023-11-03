@@ -9,16 +9,15 @@ export const Story = () => {
       <Heading className='text-2xl'>My story</Heading>
       {/* first paragraph */}
       <Paragraph>
-        Once upon a time, there was a young designer named Johny. Johny had
-        always been passionate about design, and after graduating from college,
-        she landed a job at a large design firm. However, Johny soon realized
-        that the corporate environment wasn't for him. He wanted to work on
-        projects that were more meaningful to her and make a difference in the
-        world.
+        Once upon a time, there was a young designer named Matt. Matt had always
+        been passionate about design, and after graduating from college, she
+        landed a job at a large design firm. However, Matt soon realized that
+        the corporate environment wasn't for him. He wanted to work on projects
+        that were more meaningful to her and make a difference in the world.
       </Paragraph>
       {/* second paragraph */}
       <Paragraph>
-        One day, Johny met a group of like-minded creatives who shared his
+        One day, Matt met a group of like-minded creatives who shared his
         passion for design and shared her vision of creating a design agency
         that focused on projects that made a positive impact on the world.
       </Paragraph>
