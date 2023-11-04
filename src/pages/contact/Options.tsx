@@ -19,6 +19,7 @@ import { twMerge } from 'tailwind-merge';
 interface OptionType {
   title: string;
   icon: React.ReactElement;
+  degree?: number;
 }
 
 const iconClassName: string = 'w-8 h-8 p-1.5 rounded-full bg-zinc-100';
@@ -27,18 +28,33 @@ const options: OptionType[] = [
   {
     title: 'website design',
     icon: <PiDeviceMobileSpeakerBold className={iconClassName} />,
+    degree: 180,
   },
   {
     title: 'Interaction design',
     icon: <PiHandWavingBold className={iconClassName} />,
+    degree: 45,
   },
   {
     title: 'UI/UX design',
     icon: <PiFlowArrowBold className={iconClassName} />,
+    degree: 360,
   },
-  { title: 'logo design', icon: <PiIntersectBold className={iconClassName} /> },
-  { title: 'branding', icon: <PiStackSimpleBold className={iconClassName} /> },
-  { title: 'general', icon: <PiLightningBold className={iconClassName} /> },
+  {
+    title: 'logo design',
+    icon: <PiIntersectBold className={iconClassName} />,
+    degree: 90,
+  },
+  {
+    title: 'branding',
+    icon: <PiStackSimpleBold className={iconClassName} />,
+    degree: 180,
+  },
+  {
+    title: 'general',
+    icon: <PiLightningBold className={iconClassName} />,
+    degree: 45,
+  },
 ];
 
 interface OptionsProps {
@@ -71,7 +87,12 @@ export const Options = (props: OptionsProps) => {
           >
             {/* option icon */}
             <motion.span
-              animate={help === option.title ? { rotate: 360 } : { rotate: 0 }}
+              initial={{ rotate: 0 }}
+              animate={
+                help === option.title
+                  ? { rotate: option.degree }
+                  : { rotate: 0 }
+              }
               transition={{ duration: 0.5 }}
             >
               {option.icon}
